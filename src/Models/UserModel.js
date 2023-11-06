@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const category = require("./CategoryModel");
+const Schema = mongoose.Schema;
 
-const UserModal = new mongoose.Schema({
-  Name: String,
+const UserModal = new Schema({
+  Name: { type: String, required: true },
   Email: { type: String, unique: true, required: true },
   Password: { type: String, required: true },
   categories: {
-    category: { type: [Schema.Types.ObjectId], ref: "category" },
+    category: { type: [Schema.Types.ObjectId], ref: "Category" },
   },
   products: {
     product: { type: [Schema.Types.ObjectId], ref: "Product" },
@@ -15,4 +15,4 @@ const UserModal = new mongoose.Schema({
 
 const User = mongoose.model("User", UserModal);
 
-module.exports(User);
+module.exports = User;

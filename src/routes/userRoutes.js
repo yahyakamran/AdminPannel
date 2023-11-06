@@ -1,8 +1,9 @@
 const Express = require("express");
 const router = Express.Router();
-const { createUser, fetchUser } = require("../controllers/userController");
+const { createUser, fetchAllUser ,fetchOneUser} = require("../controllers/userController");
 
-router.get("/create", createUser);
-router.get("/fetch", fetchUser);
+router.post("/create", createUser);
+router.get("/fetch", fetchAllUser);
+router.get("/fetchOne",fetchOneUser);
 
 module.exports = router;
